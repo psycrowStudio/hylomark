@@ -1,0 +1,23 @@
+<% var query_value = typeof query !== 'undefined' ? query : 'Do you want to continue?' %>
+<% var input_value = typeof input !== 'undefined' ? input : 'text' %>
+<% var defaultValue_value = typeof defaultValue !== 'undefined' ? defaultValue : '' %>
+<% var placeholder_value = typeof placeholder !== 'undefined' ? placeholder : 'Text here' %>
+<% var hoverText_value = typeof hoverText !== 'undefined' ? hoverText : '' %>
+
+<h3><%= query_value %></h3>
+<div class="field-box">
+    <% if(input_value === "textarea") {%>
+        <textarea class="dialog-input autofocus"
+            value="<%= defaultValue_value %>" 
+            placeholder="<%= placeholder_value %>" 
+            title="<%= hoverText_value %>" 
+        ></textarea>
+    <% } else { %>
+        <input class="dialog-input autofocus"
+            type="<%= input_value %>" 
+            value="<%= defaultValue_value %>" 
+            placeholder="<%= placeholder_value %>" 
+            title="<%= hoverText_value %>" 
+        />
+    <% } %>
+</div>

@@ -1,0 +1,24 @@
+<% var label_value = typeof label !== 'undefined' ? label : '' %>
+<% var hover_value = typeof hover_text !== 'undefined' ? hover_text : '' %>
+<% var classes_value = Array.isArray(classes) ? classes.join(' ') : 'tool-bar-button' %>
+<% var glyph_value = typeof glyph_code !== 'undefined' ? glyph_code : '' %>
+<% var id_value = typeof id !== 'undefined' ? id : '' %>
+
+<% var is_disabled = typeof disabled !== 'undefined' ? disabled : false %>
+
+<button title="<%= hover_value %>"
+<% if (id_value) { %>  
+    id="<%= id_value %>"
+<% }%>
+<% if (classes_value) { %>  
+    class="<%= classes_value %>"
+<% } %>
+<% if (is_disabled) { %><%= 'disabled' %><% } %>
+>
+    <% if (glyph_value) { %>  
+        <i class="glyph fa fa-<%= glyph_value %>"></i>
+    <% } %>
+    <span class="label">
+        <%= label_value %>
+    </span>
+</button>

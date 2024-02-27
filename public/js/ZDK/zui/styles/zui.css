@@ -1,0 +1,220 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica;
+}
+
+[id *= "box_"] {
+    background-color: #f1f1f1;
+    margin: 15px;
+    padding: 24px;
+}
+
+.zui-component {
+    position: relative;
+    /* box method, font, color, etc*/
+}
+
+.zui-component.status-error	{
+    border: 1px dotted red !important; 
+}
+
+.zui-component.status-error::before {
+    content: '\f06a';
+    font-family: 'FontAwesome';
+    color:red;
+    position: absolute;
+    z-index: 100;
+    top:5px;
+    left:5px;
+}
+
+.zui-component.status-active	{
+    border: 2px solid #333 !important; 
+}
+
+.zui-component.status-inactive	{
+    border: 1px solid #666 !important; 
+    color: #666;
+}
+
+.zui-component.status-disabled	{
+    border: 1px solid #999 !important; 
+    color: #999 !important;
+    pointer-events: none !important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.zui-component.status-disabled *	{
+    user-select: inherit !important;
+}
+
+.zui-component.status-disabled::before {
+    content: '\f056 ';
+    font-family: 'FontAwesome';
+    color:#666;
+    position: absolute;
+    z-index: 100;
+    top:5px;
+    left:5px;
+}
+
+.zui-component.status-loading	{
+    border:  1px solid #AAA !important; 
+    color: #AAA;
+}
+
+.zui-component.status-loading::before {
+    content: '\f013';
+    font-family: 'FontAwesome';
+    color: rgba(51,51,51 0.6);
+    position: absolute;
+    z-index: 100;
+    top:5px;
+    left:5px;
+    -webkit-animation: infinite-spinning 1.5s infinite linear; /* Safari 4+ */
+    -moz-animation:    infinite-spinning 1.5s infinite linear; /* Fx 5+ */
+    -o-animation:      infinite-spinning 1.5s infinite linear; /* Opera 12+ */
+    animation:         infinite-spinning 1.5s infinite linear; /* IE 10+, Fx 29+ */
+}
+
+/* Partials */
+.zui-screen {
+    position: absolute;
+    display: table;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.7);
+    pointer-events: none;
+}
+
+.zui-message {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Modifiers */
+.zui-invis {
+    visibility: hidden !important;
+}
+
+.zui-hidden {
+    visibility: hidden !important;
+    z-index: -999999 !important;
+    position: fixed !important;
+}
+
+.hidden,
+.zui-noDisplay {
+    display: none !important;
+}
+
+.bgClear {
+    background-color: transparent !important;
+}
+
+button {
+    border: dotted #333 1px;
+    padding: 8px;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+button:hover {
+    border: solid #333 1px;
+    background-color: crimson;
+    color: #FFF;
+    cursor: pointer;
+}
+
+
+/*  FORMS & INPUT FIELD */
+.zui-input {
+    padding:8px;
+}
+
+.zui-input-label {
+    margin: 12px 0 2px;
+    font-style: italic;
+}
+
+.zui-field-prompt {
+    margin: 18px 0 6px;
+    font-size: 1.1rem;
+}
+
+.zui-output {
+    border: 1px solid #333;
+    padding: 6px 8px;
+    margin: 0;
+    font-weight: bold;
+    font-size: 0.85rem;
+    pointer-events: none !important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.zui-fieldset {
+    padding: 10px;
+}
+
+.zui-fieldset.no-border {
+   border: none;
+}
+
+.zui-legend {
+    font-size: 1.4rem;
+    margin: 0 0 -12px;
+    padding: 10px 34px 0 10px;
+    position: relative;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.zui-fieldset:not(.collapsed) .zui-legend:not(.collapsed):after {
+    content: '\f146';
+    font-family: 'FontAwesome';
+    position: absolute;
+    z-index: 100;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+    font-size: .95rem;
+    pointer-events: auto;
+}
+
+.zui-fieldset.collapsed .zui-legend:after {
+    content: '\f0fe';
+    font-family: 'FontAwesome';
+    position: absolute;
+    z-index: 100;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+    font-size: .95rem;
+    pointer-events: auto;
+}
+
+.zui-fieldset.collapsed *:not(legend) {
+    display: none;
+}
+/* --- */

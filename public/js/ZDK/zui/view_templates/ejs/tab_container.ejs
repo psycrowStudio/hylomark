@@ -1,0 +1,18 @@
+<div class="tab_box">
+    <div class="tabs_row">
+        <% var activeContent = null %>  
+        <% if (tabs) { %>  
+            <% for (key in tabs) { %>
+                <span id="<%= key %>" 
+                    title="<%= tabs[key].hover %>" 
+                    class="zui-tab <%= tabs[key].disabled === true ? 'disabled' : '' %>">
+                        <% if (typeof tabs[key].glyph_code !== 'undefined') { %>  
+                            <i class="fa fa-<%= tabs[key].glyph_code %>">&nbsp;</i>
+                        <% } %>
+                        <%= tabs[key].label %>
+                </span>
+            <% } %>
+        <% }%>
+    </div>
+    <div class="tabs_content_row"></div>
+</div>

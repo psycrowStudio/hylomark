@@ -1,0 +1,30 @@
+/* TOOLBAR STYLES */
+.toolbar-container {
+    border: dotted #333 1px;
+    list-style: none;
+    font-size: 0;
+}
+
+
+/* .toolbar-button {
+    margin: ;
+} */
+
+.toolbar-button:first-child {
+    margin-left: 0;
+}
+
+.toolbar-button:last-child {
+    margin-right: 0;
+}
+
+.toolbar-container.vertical {
+    height: 100%;
+}
+
+
+.toolbar-container.vertical button {
+    display:block;
+    width: 100%;
+    margin: 0;
+}

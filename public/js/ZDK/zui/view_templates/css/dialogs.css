@@ -1,0 +1,266 @@
+/* Partials */
+#dialogLayer {
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.disable-pointer-events {
+    pointer-events: none !important;
+}
+
+/*  GRID TESTING */
+.zui-dialog-panel:focus,
+.zui-dialog-body:focus {
+    outline: none;
+}
+
+.zui-dialog.darken,
+.overlay-bg {
+    background-color: rgba(55,55,55,0.85);
+    pointer-events: all !important;
+}
+
+#dialogLayer .zui-dialog {
+    pointer-events: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 15% 75% 10%;
+    grid-template-areas:
+    "...... ...... ......"
+    "...... dialog ......"
+    "...... ...... ......";
+}
+
+#dialogLayer .zui-dialog.active {
+    z-index: 999;
+}
+
+.zui-dialog-body {
+    position: relative;
+    grid-area: dialog;
+}
+
+.zui-dialog-panel {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #999;
+    padding: 2px;
+    overflow: hidden;
+    pointer-events: all;
+}
+
+
+.zui-dialog-title-bar {
+    min-height: 20px;
+    background-color: #333;
+    padding: 12px 20px;
+    color: #c1c1c1;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currntly */
+}
+
+.zui-drag .zui-dialog-title-bar {
+    cursor: move;
+}
+
+
+.zui-dialog-content {
+    min-height: 50px;
+    padding: 12px 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+}
+
+.zui-dialog-button-bar {
+    min-height: 20px;
+    background-color: #333;
+    background-color: #333;
+    padding: 12px 20px;
+}
+
+.active .zui-dialog-panel {
+    background-color: #f00;
+}
+
+.zui-dialog-panel > .edge {
+    background-color:#c1c1c1;
+    cursor: initial;
+
+    position: relative;
+    
+    display: grid;
+    grid-template-rows: minmax(48px, auto) minmax(100px, 1fr) minmax(36px, auto);
+    max-height: 75vh;
+}
+
+
+.zui-loading-dialog .zui-dialog-panel {
+    max-width: 500px;
+    overflow:hidden;
+    margin: 0 auto;
+    border: 2px solid crimson;
+    /* border-radius: 20px; */
+    padding: 40px;
+    text-align: center;
+    font-size: 2.0rem;
+    background-color: #333;
+    color: #c1c1c1;
+
+    z-index: 9999;
+    pointer-events: none;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+/*  END GRID TESTING */
+
+
+/*  CONTENT STYLES */
+.zui-dialog-title-bar > .glyph {
+    font-size: 1.4rem;
+}
+
+.zui-dialog-title-bar > .title {
+    font-size: 1.2rem;
+}
+
+.zui-dialog-content textarea {
+    width: 100%;
+    min-height: 75px;
+    margin: 12px 0;
+    padding: 8px;
+}
+
+.zui-dialog-content input {
+    width: 100%;
+    margin: 20px 0;
+    padding: 8px 12px;
+    border-radius: 3px;
+    border: 2px inset #999;
+}
+
+.zui-dialog-content textarea:focus, 
+.zui-dialog-content input:focus {
+    border: 2px inset crimson;
+    outline: none;
+}
+
+.zui-dialog-content .mc-box {
+    margin: 12px 0;
+}
+/*  END CONTENT STYLES */
+
+
+
+
+.zui-dialog .zui-dialog-title-bar .buttons {
+    float: right;
+}
+
+.zui-dialog .zui-dialog-title-bar button {
+    padding: 2px 4px;
+}
+
+
+.zui-dialog .zui-dialog-button-bar  .buttons {
+    float: right;
+    overflow: auto;
+}
+
+.zui-dialog .zui-dialog-button-bar  button {
+    padding: 8px 12px;
+}
+
+/*  Resize Grab-Handles */
+.zui-dialog .resize-N {
+    position: absolute;
+    cursor: ns-resize;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 10%;
+}
+.zui-dialog .resize-NW {
+    position: absolute;
+    cursor: nw-resize;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: 10%;
+}
+
+.zui-dialog .resize-NE {
+    position: absolute;
+    cursor: ne-resize;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: 10%;
+}			
+
+.zui-dialog .resize-S {
+    position: absolute;
+    cursor: ns-resize;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 10%;
+}			
+
+.zui-dialog .resize-SE {
+    position: absolute;
+    cursor: se-resize;
+    bottom: 0;
+    right: 0;
+    width: 10%;
+    height: 10%;
+}			
+
+.zui-dialog .resize-SW {
+    position: absolute;
+    cursor: sw-resize;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    height: 10%;
+}			
+
+.zui-dialog .resize-E {
+    position: absolute;
+    cursor: ew-resize;
+    right: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 10%;
+}			
+
+.zui-dialog .resize-W {
+    position: absolute;
+    cursor: ew-resize;
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 10%;
+}

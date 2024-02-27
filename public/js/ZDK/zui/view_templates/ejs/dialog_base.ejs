@@ -1,0 +1,95 @@
+<% var title_value = typeof title !== 'undefined' ? title : '' %>
+<% var glyph_value = typeof glyph_code !== 'undefined' ? glyph_code : '' %>
+<% var overlay_value = showOverlay ? 'enabled' : '' %>
+
+<div class="zui-dialog-body">
+    <div class="zui-dialog-panel" tabindex="-1">
+        <% if(resizable) {%>
+            <span class="resize-N"></span>
+            <span class="resize-NE"></span>
+            <span class="resize-E"></span>
+            <span class="resize-SE"></span>
+            <span class="resize-S"></span>
+            <span class="resize-SW"></span>
+            <span class="resize-W"></span>
+            <span class="resize-NW"></span>
+        <% } %> 
+        <div class="edge">
+            <% if(showTitleBar) {%>
+                <div class="zui-dialog-title-bar ">
+                    <% if(glyph_value) {%> <i class="glyph fa fa-<%= glyph_value %>">&nbsp;&nbsp;</i> <% } %> 
+                    <span class="title"><%= title_value %></span>
+                    
+                    <% if(showTitleBarButtons && title_bar_buttons.length > 0) {%>
+                        <span class="buttons">
+                            <% title_bar_buttons.forEach(function(el, i) { %>
+                                <% var btn_label_value = typeof el.label !== 'undefined' ? el.label : '' %>
+                                <% var btn_hover_value = typeof el.hover_text !== 'undefined' ? el.hover_text : '' %>
+                                <% var btn_classes_value = Array.isArray(el.classes) ? el.classes.join(' ') : 'tool-bar-button' %>
+                                <% var btn_glyph_value = typeof el.glyph_code !== 'undefined' ? el.glyph_code : '' %>
+                                <% var btn_id_value = typeof el.id !== 'undefined' ? el.id : '' %>
+                                
+                                <% var btn_is_disabled = typeof el.disabled !== 'undefined' ? el.disabled : false %>
+                                
+                                <button title="<%= btn_hover_value %>"
+                                <% if (btn_id_value) { %>  
+                                    id="<%= btn_id_value %>"
+                                <% }%>
+                                <% if (btn_classes_value) { %>  
+                                    class="<%= btn_classes_value %>"
+                                <% } %>
+                                <% if (btn_is_disabled) { %><%= 'disabled' %><% } %>
+                                data-index="<%= i %>"
+                                >
+                                    <% if (btn_glyph_value) { %>  
+                                        <i class="glyph fa fa-<%= btn_glyph_value %>"></i>
+                                    <% } %>
+                                    <span class="label">
+                                        <%= btn_label_value %>
+                                    </span>
+                                </button>
+                            <% }) %> 
+                        </span>
+                    <% } %> 
+                </div>
+            <% } %> 
+            
+            <div class="zui-dialog-content"></div>
+            
+            <% if(showButtonBar) { %>
+                <div class="zui-dialog-button-bar">
+            
+                    <span class="buttons">
+                        <% button_bar_buttons.forEach(function(el, i) { %>
+                            <% var btn_label_value = typeof el.label !== 'undefined' ? el.label : '' %>
+                            <% var btn_hover_value = typeof el.hover_text !== 'undefined' ? el.hover_text : '' %>
+                            <% var btn_classes_value = Array.isArray(el.classes) ? el.classes.join(' ') : 'tool-bar-button' %>
+                            <% var btn_glyph_value = typeof el.glyph_code !== 'undefined' ? el.glyph_code : '' %>
+                            <% var btn_id_value = typeof el.id !== 'undefined' ? el.id : '' %>
+                            
+                            <% var btn_is_disabled = typeof el.disabled !== 'undefined' ? el.disabled : false %>
+                            
+                            <button title="<%= btn_hover_value %>"
+                            <% if (btn_id_value) { %>  
+                                id="<%= btn_id_value %>"
+                            <% }%>
+                            <% if (btn_classes_value) { %>  
+                                class="<%= btn_classes_value %>"
+                            <% } %>
+                            <% if (btn_is_disabled) { %><%= 'disabled' %><% } %>
+                            data-index="<%= i %>"
+                            >
+                                <% if (btn_glyph_value) { %>  
+                                    <i class="glyph fa fa-<%= btn_glyph_value %>"></i>
+                                <% } %>
+                                <span class="label">
+                                    <%= btn_label_value %>
+                                </span>
+                            </button>
+                        <% }) %> 
+                    </span>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>

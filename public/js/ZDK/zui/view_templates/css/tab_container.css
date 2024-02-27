@@ -1,0 +1,40 @@
+.tabs_row {
+    padding: 12px 0 0;
+    border: dotted #333 1px;
+    font-size: 0;
+}
+
+.tabs_content_row {
+    /* min-height: 200px; */
+    border: dotted #333 1px;
+}
+
+.zui-tab {
+    display: inline-block;
+    border: 1px solid #333;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    text-align: center;
+    padding: 4px 8px 2px;
+    margin: 0;
+    font-size: .85rem;
+}
+
+.zui-tab:hover {
+    display: inline-block;
+    cursor: pointer;
+    background-color: crimson;
+    
+}
+
+.zui-tab.active {
+    text-decoration: underline;
+    
+}
+
+.zui-tab.disabled {
+    color: #999;
+    border: 1px solid #999;
+    pointer-events:none;
+    cursor: not-allowed;
+}

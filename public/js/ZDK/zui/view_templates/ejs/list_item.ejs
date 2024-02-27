@@ -1,0 +1,30 @@
+<% var index = typeof index !== 'undefined' ? index : 0 %>
+<% var label_value = typeof label !== 'undefined' ? label : 'Item: ' + index %>
+<% var item_value = typeof value !== 'undefined' ? value : label_value %>
+<% var label_prefix_value = typeof prefix !== 'undefined' ? prefix : '' %>
+<% var hover_value = typeof hover_text !== 'undefined' ? hover_text : '' %>
+<% var classes_value = Array.isArray(classes) ? classes.concat('list-item').join(' ') : 'list-item' %>
+<% var glyph_value = typeof glyph_code !== 'undefined' ? glyph_code : '' %>
+<% var id_value = typeof id !== 'undefined' ? id : '' %>
+
+<li title="<%= hover_value %>"
+<% if (id_value) { %>  
+    id="<%= id_value %>"
+<% }%>
+<% if (classes_value) { %>  
+    class="<%= classes_value %>"
+<% } %>
+<% if (item_value) { %>  
+    data-value="<%= item_value %>"
+<% } %>
+>
+    <% if (label_prefix_value) { %>  
+        <span class="prefix"><%= label_prefix_value + ': ' %></span>
+    <% } %>
+    <% if (glyph_value) { %>  
+        <i class="glyph fa fa-<%= glyph_value %>"></i>
+    <% } %>
+    <span class="label">
+        <%= label_value %>
+    </span>
+</li>

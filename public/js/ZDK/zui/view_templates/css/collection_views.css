@@ -1,0 +1,44 @@
+/* LIST STYLES */
+.collection-list-container {
+    border: dotted #333 1px;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    display: grid;
+}
+
+.collection-list-item {
+    padding: 6px 12px;
+    border: 1px dotted;
+    margin: 4px;
+}
+
+.collection-list-item.clickable-item:hover {
+    cursor: pointer;
+    border: 1px solid #333;
+    outline: 1px solid #333;
+}
+
+
+/* GRID STYLES */
+.collection-grid-container {
+    border: dotted #333 1px;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    padding: 4px;
+    gap: 4px 4px;
+}
+
+.collection-grid-item {
+    padding: 6px 12px;
+    border: 1px dotted;
+    min-height: 120px;
+}
+
+.collection-grid-item.clickable-item:hover {
+    cursor: pointer;
+    border: 1px solid #333;
+    outline: 1px solid #333;
+}
