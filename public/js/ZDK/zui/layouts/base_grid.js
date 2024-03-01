@@ -15,8 +15,7 @@ define([
         generate: function(pv){       
             var h = zui.types.view.fab( { 
                 id:'header', 
-                parent: pv,
-                template: 'TILE STREAM',
+                parent: pv
             });
 
             zui.types.view.fab( {
@@ -26,7 +25,7 @@ define([
                 classes:['context-bar', 'g-v-24'],
                 events: {
                 },
-                template:'<div class="lSide g-col-6"></div><div class="rSide g-col-6"></div>'
+                template:'<div class="lSide g-col-6"><span>TILE STREAM</span></div><div class="rSide g-col-6"></div>'
             });
 
             var content = zui.types.view.fab({ 
@@ -47,7 +46,7 @@ define([
 
             zui.types.view.fab( { id:'footer', 
             parent: pv,                 
-            template:' &copy;2020 PsyCrow Studio &#x03A8;&#x16E6;' 
+            template:' &copy;2024 &#x16E6;&#x16E6;' 
         });
         }
     };

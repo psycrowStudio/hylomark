@@ -33,18 +33,47 @@ define([
     // Tool Bar Example
     var admin_tool_settings = {
         parent: testPage.findChildView('header'),
-        insertionSelector: '#header',
+        insertionSelector: '.rSide',
         classes:  ["admin_toolbar"],
         buttons: [
             {
                 label:"",
                 glyph_code:"plus-square",
-                hover_text: "TEST",
+                hover_text: "Add New Tile",
                 disabled: false,
                 visible: true,
                 onClick:function(view, ev){
-                    //console.log('Hello!');
                     tt.add_tile();
+                }
+            },
+            {
+                label:"",
+                glyph_code:"arrows-alt-v",
+                hover_text: "Toggle Random Flip X",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    tt.toggle_rng_x(ev.currentTarget.classList.toggle('enabled'));  
+                }
+            },
+            {
+                label:"",
+                glyph_code:"arrows-alt-h",
+                hover_text: "Toggle Random Flip Y",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    tt.toggle_rng_y(ev.currentTarget.classList.toggle('enabled'));
+                }
+            },
+            {
+                label:"",
+                glyph_code:"redo",
+                hover_text: "Toggle Random Flip Z",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    tt.toggle_rng_z(ev.currentTarget.classList.toggle('enabled'));
                 }
             },
         ]

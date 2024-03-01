@@ -1,5 +1,53 @@
+
+.tile-tray * {
+    transition: all 0.5s ease;
+} 
+
+.tile-tray {
+    margin: 50px;
+    background-color: transparent;
+    border: #555 dotted 1px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.3%, 1fr));
+    grid-template-rows: repeat(6, minmax(70px, 1fr));
+    /* grid-auto-rows: 100px;
+    grid-auto-columns: 100px; */
+    grid-gap: 1em;
+
+}
+
 .tile {
     /* size and spacing depends on grid & modifiers */
-    border: dotted #333 1px;
     /* filter: drop-shadow(16px 16px); */
+    padding:20px;
+    background-color: #FFF;
+    /* display: inline-block; */
+    display: grid;
+    font-size: 32px;
+    justify-items: center;
+    align-items: center;
+    border-radius: 20px;
+    /* grid-area: 1 2 1 2 */
 }
+
+.tile:hover {
+    background-color: #cdcdcd;
+    outline: 8px solid #333;
+    cursor: pointer;
+    transition-timing-function: linear;
+}
+
+.tile.rotX:not(.rotY):not(.rotZ) {
+   transform: rotateX(180deg);
+   outline: 3px red solid;
+}
+
+.tile.rotY:not(.rotX):not(.rotZ) {
+    transform: rotateY(180deg);
+    outline: 3px blue solid;
+ }
+
+ .tile.rotZ:not(.rotX):not(.rotY) {
+    transform: rotateZ(180deg);
+    outline: 3px green solid;
+ }
