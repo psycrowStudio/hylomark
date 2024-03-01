@@ -5,10 +5,18 @@ define(['backbone'], function (backbone) {
         routes: {
             '': 'home',
             '/': 'home',
+            'aff': 'affiliate_login',
+            'cli': 'client_login',
         },
 
         home: function (){
-            require(['pages/index/index'], function(index){});
+            require(['pages/home/index'], function(index){});
+        },
+        affiliate_login: function (){
+            require(['pages/affiliate_login/index'], function(index){});
+        },
+        client_login: function (){
+            require(['pages/client_login/index'], function(index){});
         },
     })
 

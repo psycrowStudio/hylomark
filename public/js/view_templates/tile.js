@@ -1,8 +1,8 @@
 define([
     "mod/templating",
     "mod/dom_helper",
-    "text!/view_templates/ejs/actor_editor.ejs",
-    "text!/view_templates/css/actor_editor.css"
+    "text!/js/view_templates/ejs/tile.ejs",
+    "text!/js/view_templates/css/tile.css"
 ],
 function (
     mod_templating,

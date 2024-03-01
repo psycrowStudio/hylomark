@@ -57,12 +57,9 @@ define([
                     
                     initialize: function() {
                         this.el.className = this.classes.join(' ');
-                        
                         if(this.parentView) {
                             this.renderOrder = typeof settings.renderOrder === "undefined" ? this.parentView.childViews.length + 1 : this.renderOrder;
                             this.parentView.addView(this);
-                            
-
                         }
     
                         //_inform(this, "zui-component-created");

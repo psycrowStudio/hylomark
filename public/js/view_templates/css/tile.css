@@ -1,5 +1,5 @@
 .tile {
     /* size and spacing depends on grid & modifiers */
-    border: dotted #333 3px;
-    filter: drop-shadow(16px 16px);
+    border: dotted #333 1px;
+    /* filter: drop-shadow(16px 16px); */
 }

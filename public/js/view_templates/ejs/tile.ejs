@@ -1,7 +1,7 @@
 <div class="tile">
-    <% if(get('glyph_code')) { %>
-        <i id="actor_glyph" class="fa fa-<%= get('glyph_code') %>"></i>
-    <% } else if(get('text')) { %>
-        <p><%= get('text') %>  </p>
+    <% if(glyph_code) { %>
+        <i id="actor_glyph" class="fa fa-<%= glyph_code %>"></i>
+    <% } else if(text) { %>
+        <p><%= text %>  </p>
     <% } %>
 </div>
