@@ -1,4 +1,11 @@
 define(['zui'], function(zui){
+    // tile tray
+    // board engine
+
+    // page pattern, pull in view template here to start building around...
+    // var scroll_box = testPage.findChildView('scrolling_box');
+    // var actor_viewer = rbss_actor_view.init(scroll_box, '#scrolling_box', a1);
+
     var testPage = zui.types.page.fab({ 'title' : 'ZUI Trigger Test Page', 'isActive': true });
     zui.types.component.fab( { id:'header', parentModel: testPage } );
     zui.types.component.fab( { id:'content', parentModel: testPage } );
