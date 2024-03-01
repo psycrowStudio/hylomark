@@ -1,9 +1,3 @@
-.page_grid {
-	display: grid;
-	grid-template-rows: minmax(35px, auto) minmax(0, 1fr) minmax(35px, auto);
-	grid-template-columns: 1fr;
-}
-
 /*  GRID Helpers */
 .g-v-24 {
 	display: grid;

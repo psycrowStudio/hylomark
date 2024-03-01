@@ -1,43 +1,61 @@
 define([
     'mod/dom_helper'
-    , 'mod/animation'
     , 'zui'
     , 'zuiRoot/layouts/base_grid'
     , 'components/tile_tray'
-    , "zuiRoot/components/tab_view"
-    , "zuiRoot/components/collection_viewer"
     , "zuiRoot/components/toolbar"
+    , "text!/styles/tilestream.css"
 ], function(
-    mod,
-    dom,
+    mod_dom,
     zui, 
     layout_base,
     tileTray,
-    tab_view,
-    collection_viewer,
-    toolbar
+    toolbar,
+    tilestream_css
 ){
-    // board engine
-    var testPage = zui.types.page.fab({ 'title' : 'TILE STREAM', 'isActive': true });
-    zui.types.view.fab( { 
-        id:'header',
-        parent: testPage, 
-        template: 'TILE STREAM'
-    });
+    var MODULE_NAME = "Home Page";
+    mod_dom.css.addRaw(MODULE_NAME, tilestream_css);
 
-    var content = zui.types.view.fab( { 
-        id:'content', 
-        parent: testPage,
-    });
+    // create page
+    var testPage = zui.types.page.fab(
+        { 
+            title : 'TILE STREAM', 
+            isActive: true,
+            bodyClasses: ['page_grid']
+        });
 
     // setup the grid(s)
-    layout_base.generate(content);
+    layout_base.generate(testPage);
   
     // TODO test out dialog layer
     var dialogLayer = zui.components.dialogLayer.addToPage(testPage);
 
+    // Tool Bar Example
+    var admin_tool_settings = {
+        parent: testPage.findChildView('header'),
+        insertionSelector: '#header',
+        classes:  ["admin_toolbar"],
+        buttons: [
+            {
+                label:"",
+                glyph_code:"plus-square",
+                hover_text: "TEST",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    //console.log('Hello!');
+                    tt.add_tile();
+                }
+            },
+        ]
+    };
+
+    var admin_toolbar =  toolbar.init(admin_tool_settings);
+
     // tile tray
-    var tt = tileTray.init(testPage);
+    var tt = tileTray.init(testPage.findChildView('scrolling_box'));
+
+    // board engine
 
     //zui.factory.page.setActivePage(testPage);
     testPage.redraw();

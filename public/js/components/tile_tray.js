@@ -26,15 +26,29 @@ function (
             });
             
             console.log('!!!');
+            
+            var tile_view = zui.types.view.fab( {
+                model: {}, // TODO make this a tray model
+                parent: pm, 
+                insertionSelector: pms,
+                classes:['tile-tray'],
+                events: {},
+            });
 
-            return zui.types.view.fab( {
+            tile_view.add_tile = function(){
+                var nt = zui.types.view.fab( {
                     model: {}, // TODO make this a tray model
-                    parent: pm, 
-                    insertionSelector: pms,
-                    classes:['tile-tray'],
+                    parent: tile_view, 
+                    insertionSelector: '.tile-tray',
+                    classes:[''],
                     events: {},
                     template: t
                 });
+            tile_view.render();
+
+            };
+
+            return tile_view;
         },
     };
 }

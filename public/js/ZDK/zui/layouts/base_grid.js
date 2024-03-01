@@ -13,16 +13,28 @@ define([
     
     var _base_layout = {
         generate: function(pv){       
+            var h = zui.types.view.fab( { 
+                id:'header', 
+                parent: pv,
+                template: 'TILE STREAM',
+            });
+
             zui.types.view.fab( {
                 id:'context_bar', 
-                parent: pv,
-                insertionSelector: '#content',
+                parent: h,
+                insertionSelector: '#header',
                 classes:['context-bar', 'g-v-24'],
                 events: {
                 },
                 template:'<div class="lSide g-col-6"></div><div class="rSide g-col-6"></div>'
             });
-        
+
+            var content = zui.types.view.fab({ 
+                id:'content', 
+                parent: pv,
+                template:''
+            });
+
             zui.types.view.fab( {
                 id:'scrolling_box', 
                 parent: pv,
@@ -32,6 +44,11 @@ define([
                 },
                 template:''
             });
+
+            zui.types.view.fab( { id:'footer', 
+            parent: pv,                 
+            template:' &copy;2020 PsyCrow Studio &#x03A8;&#x16E6;' 
+        });
         }
     };
     
