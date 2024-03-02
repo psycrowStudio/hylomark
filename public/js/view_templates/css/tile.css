@@ -46,6 +46,28 @@
     font-weight: bold;
 }
 
+.tile.weatherbox {
+    text-align: center;
+    font-weight: bold;
+}
+
+.tile.weatherbox {
+    text-align: center;
+    font-weight: bold;
+}
+
+.tile.weatherbox .icon {
+    font-size: 42px;
+}
+
+.tile.weatherbox .temp {
+    font-size: 42px;
+}
+
+.tile.weatherbox .deg sup {
+    font-size: 22px;
+}
+
 
 .tile.w2 {
     grid-column: span 2;

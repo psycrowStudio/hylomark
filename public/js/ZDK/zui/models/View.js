@@ -168,6 +168,7 @@ define([
                             {
                                 Logger.log('removing sub-view', { tags: 'ZUI' });
                                 v.parentView = null;
+                                // TODO remove the HTML element from the DOM?
                                 return this.childViews.splice(ndx, 1);
                             }       
                         }

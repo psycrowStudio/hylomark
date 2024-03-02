@@ -2,6 +2,7 @@ define([
     'mod/dom_helper',
     'mod/animation',
     'mod/text',
+    'mod/misc',
     'zui',
     "zuiRoot/components/tab_view",
     "zuiRoot/components/collection_viewer",
@@ -13,6 +14,7 @@ function (
     mod_dom,
     mod_animation,
     mod_text,
+    mod_misc,
     zui,
     zui_tab_view,
     zui_collection_viewer,
@@ -118,30 +120,122 @@ function (
                             
                             var dom_timebox = nt.el.querySelector('.timebox');
                             dom_timebox.textContent = now.toLocaleString(luxon.DateTime.DATETIME_MED_WITH_SECONDS);
-
-                            // var dom_month = nt.el.querySelector('.timebox');
-                            // dom_month.textContent = now.getMonth();
-                            // var dom_day = nt.el.querySelector('.t_day');
-                            // dom_day.textContent = now.getDate();
-                            // var dom_year = nt.el.querySelector('.t_year');
-                            // dom_year.textContent = now.getFullYear();
-
-                            // var dom_hour = nt.el.querySelector('.t_hour');
-                            // dom_hour.textContent = now.getHours();
-                            // var dom_min = nt.el.querySelector('.t_min');
-                            // dom_min.textContent = now.getMinutes();
-                            // var dom_sec = nt.el.querySelector('.t_sec');
-                            // dom_sec.textContent = now.getSeconds();
-
                         }, 200);
                     })()
                 });
-                
-                // colorize tile?
-                // ID already has a fairly unique color
-                //nt.el.style.backgroundColor = '#'+nt.el.id;
-                tile_view.render();
 
+                tile_view.render();
+            };
+
+            tile_view.add_weather_tile = function(location){
+                var t = tile_template.compile({
+                    weather: {
+                        current_temperature: '--',
+                        current_icon: 'sun'
+                    }
+                });
+
+                var gps_str = (location.lat + "," + location.lon).replace(/\s/g,'');
+                var url = "https://api.weather.gov/points/{0}".replace("{0}", gps_str);
+                mod_misc.http(url, "GET").then(function(response){
+                    console.log('weather loc acquired!');
+                    return nt.weather_refresh(response.properties.forecastHourly, "GET");
+                }).then(function(response){
+                    console.log('base weather acquired!');
+                    setInterval((function(){
+                        var rr = response;
+                        return function(){
+                            var et = Date.parse(rr.properties.periods[0].endTime);
+                            var now = new Date();
+                            if(et > now.getTime()){
+                                nt.updateTile(rr.properties.periods[0].temperature, 
+                                    rr.properties.periods[0].shortForecast.toLowerCase(),
+                                    rr.properties.periods[0].isDaytime
+                                    );
+                            }
+                            else {
+                                nt.weather_refresh().then(function(r2){
+                                    console.log('base weather re-acquired!');
+                                    rr = r2;
+                                });
+                            }
+                        }
+                    })(), 5000);
+                });
+
+                var nt = zui.types.view.fab( {
+                    model: {}, // TODO make this a tray model
+                    parent: tile_view, 
+                    insertionSelector: '.tile-tray',
+                    classes:['tile', 'weatherbox', 'noFX'],
+                    events: {},
+                    template: t,
+                });
+
+                // sub to the refresh call ()
+
+                nt.updateTile = function(temp_value, sForecast, isDaytime){
+                    var temp = nt.el.querySelector('.temp');
+                    var icon = nt.el.querySelector('.icon');
+                    temp.textContent = temp_value;
+                    
+                    var glpyh = '';
+                    // TODO if night time, use moon icon
+                    if(sForecast.includes('partly sunny')){
+                        glpyh = isDaytime === false ? 'cloud-moon' : 'cloud-sun';
+                    }
+                    if(sForecast.includes('sunny')){
+                        glpyh = isDaytime === false ? 'moon' : 'sun';
+                    }
+                    else if (sForecast.includes('partly cloudy')){
+                        glpyh = isDaytime === false ? 'cloud-moon' : 'cloud-sun';
+                    }
+                    else if (sForecast.includes('mostly cloudy')){
+                        glpyh = 'cloud';
+                    }
+                    else if (sForecast.includes('slight chance light rain')){
+                        glpyh = isDaytime === false ? 'cloud-moon-rain' : 'cloud-sun-rain';
+                    }
+                    else if (sForecast.includes('chance light rain')){
+                        glpyh = 'cloud-rain';
+                    }
+                    else if (sForecast.includes('rain')){
+                        glpyh = 'cloud-showers-heavy';
+                    }
+                    else if (sForecast.includes('fog')){
+                        glpyh = 'smog';
+                    }
+                    else if (sForecast.includes('snow')){
+                        glpyh = 'snowflake';
+                    }
+                    else if (sForecast.includes('wind')){
+                        glpyh = 'wind';
+                    }
+                    else if (sForecast.includes('lightning') || sForecast.includes('thunder')){
+                        glpyh = 'bolt';
+                    }
+                    //Slight Chance Light Rain
+                    icon.className = "";
+                    icon.classList.add('icon');
+                    icon.classList.add('fa');
+                    icon.classList.add('fa-' + glpyh);
+                }
+
+                nt.weather_refresh = (function(url){
+                    var loc_url = !loc_url && url ? url : null;
+                    return function(url){
+                        loc_url = !loc_url && url ? url : null;
+                        return mod_misc.http(url, "GET").then(function(response){
+                            nt.updateTile(response.properties.periods[0].temperature, 
+                                response.properties.periods[0].shortForecast.toLowerCase(),
+                                response.properties.periods[0].isDaytime
+                                );
+                            return response;
+                        });
+                    };
+                })()
+
+                tile_view.render();
             };
 
             tile_view.toggle_rng_x = function(animate){

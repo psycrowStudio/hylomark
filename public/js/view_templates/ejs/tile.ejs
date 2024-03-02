@@ -13,4 +13,11 @@
         <span class="t_min"><%= time.getMinutes() %></span>:
         <span class="t_sec"><%= time.getSeconds() %></span>
     </div>
+<% } else if(typeof weather !== 'undefined') { %>
+    <div class="icon fa fa-<%= weather.current_icon %>"></div>
+    <div>
+        <span class="temp"><%= weather.current_temperature %></span>
+        <span class="deg"><sup>&deg;F</sup></span>
+    </div>
 <% } %>
+
