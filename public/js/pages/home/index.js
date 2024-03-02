@@ -48,6 +48,16 @@ define([
             },
             {
                 label:"",
+                glyph_code:"stopwatch",
+                hover_text: "Add Time Tile",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    tt.add_time_tile();
+                }
+            },
+            {
+                label:"",
                 glyph_code:"arrows-alt-v",
                 hover_text: "Toggle Random Flip X",
                 disabled: false,
@@ -74,6 +84,16 @@ define([
                 visible: true,
                 onClick:function(view, ev){
                     tt.toggle_rng_z(ev.currentTarget.classList.toggle('enabled'));
+                }
+            },
+            {
+                label:"",
+                glyph_code:"palette",
+                hover_text: "Toggle Random Coloring",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    tt.toggle_rng_rgb(ev.currentTarget.classList.toggle('enabled'));
                 }
             },
         ]

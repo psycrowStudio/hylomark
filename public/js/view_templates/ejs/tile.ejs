@@ -1,6 +1,16 @@
 
-<% if(glyph_code) { %>
+<% if(typeof glyph_code !== 'undefined') { %>
     <i id="actor_glyph" class="fa fa-<%= glyph_code %>"></i>
-<% } else if(text) { %>
+<% } else if(typeof text !== 'undefined') { %>
     <p><%= text %>  </p>
+<% } else if(typeof time !== 'undefined') { %>
+    <div class="timebox">
+        <span class="t_month"><%= time.getMonth() + 1 %></span>\
+        <span class="t_day"><%= time.getDate() %></span>\
+        <span class="t_year"><%= time.getFullYear() %></span>
+        &nbsp;&nbsp;
+        <span class="t_hour"><%= time.getHours() %></span>:
+        <span class="t_min"><%= time.getMinutes() %></span>:
+        <span class="t_sec"><%= time.getSeconds() %></span>
+    </div>
 <% } %>

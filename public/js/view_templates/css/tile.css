@@ -5,6 +5,7 @@
 
 .tile-tray {
     margin: 50px;
+    padding: 10px;
     background-color: transparent;
     border: #555 dotted 1px;
     display: grid;
@@ -13,6 +14,7 @@
     /* grid-auto-rows: 100px;
     grid-auto-columns: 100px; */
     grid-gap: 1em;
+    overflow: hidden;
 
 }
 
@@ -32,10 +34,49 @@
 
 .tile:hover {
     background-color: rgb(224, 255, 227);
-    outline: 8px solid limegreen;
+    outline: 8px solid limegreen !important;
     cursor: pointer;
     transition-timing-function: linear;
 }
+
+.tile.timebox {
+    grid-column: span 2;
+    font-size: 42px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.tile.w2 {
+    grid-column: span 2;
+    font-size: 72px;
+}
+
+.tile.h2 {
+    grid-row: span 2;
+    font-size: 72px;
+}
+
+.tile.w3 {
+    grid-column: span 3;
+    font-size: 102px;
+}
+
+.tile.h3 {
+    grid-row: span 3;
+    font-size: 102px;
+}
+
+.tile.w4 {
+    grid-column: span 4;
+    font-size: 132px;
+}
+
+.tile.h4 {
+    grid-row: span 4;
+    font-size: 132px;
+}
+
 
 .tile.rotX:not(.rotY):not(.rotZ) {
    transform: rotateX(180deg);
