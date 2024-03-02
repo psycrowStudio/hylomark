@@ -31,8 +31,8 @@
 }
 
 .tile:hover {
-    background-color: #cdcdcd;
-    outline: 8px solid #333;
+    background-color: rgb(224, 255, 227);
+    outline: 8px solid limegreen;
     cursor: pointer;
     transition-timing-function: linear;
 }

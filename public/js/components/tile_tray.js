@@ -66,6 +66,10 @@ function (
                     events: {},
                     template: t
                 });
+                
+                // colorize tile?
+                // ID already has a fairly unique color
+                //nt.el.style.backgroundColor = '#'+nt.el.id;
             tile_view.render();
 
             };
