@@ -158,6 +158,19 @@ button:hover {
 }
 
 
+/*  ZUI Animated background layer */
+#abl {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%; 
+}
+#abl canvas {
+    height: 100%;
+    width: 100%;
+}
+
+
 /*  FORMS & INPUT FIELD */
 .zui-input {
     padding:8px;

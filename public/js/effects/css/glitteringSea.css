@@ -1,0 +1,7 @@
+  body {
+    background: #00000B;
+  }
+  
+  #abl_canvas {
+    filter: blur(4px);
+  }

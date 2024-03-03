@@ -5,6 +5,8 @@ define([
     , 'zuiRoot/layouts/base_grid'
     , 'components/tile_tray'
     , "zuiRoot/components/toolbar"
+    , "THREE"
+    , 'effects/glitteringSea'
     , "text!/styles/tilestream.css"
     , "text!/data/zip_lat_lon_2022.csv"
 ], function(
@@ -14,9 +16,12 @@ define([
     layout_base,
     tileTray,
     toolbar,
+    THREE,
+    FX_glitteringSea,
     tilestream_css,
     zipcode_csv
 ){
+    
     var MODULE_NAME = "Home Page";
     mod_dom.css.addRaw(MODULE_NAME, tilestream_css);
 
@@ -142,6 +147,17 @@ define([
                 visible: true,
                 onClick:function(view, ev){
                     tt.toggle_rng_rgb(ev.currentTarget.classList.toggle('enabled'));
+                }
+            },
+            {
+                label:"",
+                glyph_code:"braille",
+                hover_text: "Toggle Background Coloring",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    var abl = document.querySelector('#abl_canvas');
+                    FX_glitteringSea.applyToCanvas(abl);
                 }
             },
         ]

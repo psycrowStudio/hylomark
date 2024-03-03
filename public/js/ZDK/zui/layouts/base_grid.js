@@ -14,6 +14,13 @@ define([
     var _base_layout = {
         generate: function(pv){       
             var h = zui.types.view.fab( { 
+                id:'abl', 
+                parent: pv,
+                classes:['abl'],
+                template:'<canvas id="abl_canvas"></canvas>'
+            });
+
+            var h = zui.types.view.fab( { 
                 id:'header', 
                 parent: pv
             });

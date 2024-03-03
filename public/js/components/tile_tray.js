@@ -224,8 +224,8 @@ function (
                 nt.weather_refresh = (function(url){
                     var loc_url = !loc_url && url ? url : null;
                     return function(url){
-                        loc_url = !loc_url && url ? url : null;
-                        return mod_misc.http(url, "GET").then(function(response){
+                        loc_url = !loc_url && url ? url : loc_url;
+                        return mod_misc.http(loc_url, "GET").then(function(response){
                             nt.updateTile(response.properties.periods[0].temperature, 
                                 response.properties.periods[0].shortForecast.toLowerCase(),
                                 response.properties.periods[0].isDaytime

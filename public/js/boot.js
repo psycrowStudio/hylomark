@@ -12,6 +12,7 @@ requirejs.config({
         underscore: { exports: "_" },
         jquery: { exports: '$' },
         luxon: { exports: 'luxon' },
+        THREE: { exports: 'THREE' }
     },
     paths: {
         "router": "./routes",
@@ -20,6 +21,7 @@ requirejs.config({
         "text": './ZDK/3rdParty/require_text',
         underscore: './ZDK/3rdParty/underscore.amd',  
         backbone: './ZDK/3rdParty/backbone.amd',
+        THREE: './ZDK/3rdParty/three.min',
         
         'velocity-animate': './ZDK/3rdParty/velocity.min',
         //d3: 'js/3rdParty/d3.v3.min.js',
