@@ -25,6 +25,9 @@ define([
     var MODULE_NAME = "Home Page";
     mod_dom.css.addRaw(MODULE_NAME, tilestream_css);
 
+
+   
+
     // create page
     var testPage = zui.types.page.fab(
         { 
@@ -71,7 +74,7 @@ define([
             },
             {
                 label:"",
-                glyph_code:"stopwatch",
+                glyph_code:"clock",
                 hover_text: "Add Time Tile",
                 disabled: false,
                 visible: true,
@@ -107,6 +110,16 @@ define([
                     });
 
                     // tt.add_weather_tile("35073");
+                }
+            },
+            {
+                label:"",
+                glyph_code:"qrcode",
+                hover_text: "Add QR Tile",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    // tt.add_qr_tile();
                 }
             },
             {
@@ -156,8 +169,15 @@ define([
                 disabled: false,
                 visible: true,
                 onClick:function(view, ev){
-                    var abl = document.querySelector('#abl_canvas');
-                    FX_glitteringSea.applyToCanvas(abl);
+                    if(ev.currentTarget.classList.toggle('enabled')){
+                        var abl = document.querySelector('#abl_canvas');
+                        FX_glitteringSea.applyToCanvas(abl);
+                    }
+                    else {
+                        // turn it off!?
+
+                    }
+
                 }
             },
         ]
@@ -169,6 +189,7 @@ define([
     var tt = tileTray.init(testPage.findChildView('scrolling_box'));
 
     // board engine
+
 
     //zui.factory.page.setActivePage(testPage);
     testPage.redraw();

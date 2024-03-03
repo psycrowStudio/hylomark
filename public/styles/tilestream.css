@@ -15,6 +15,11 @@ body {
 	color: #c0c0c0;
 }
 
+#header .logo
+{
+    font-size: 1.4rem;
+}
+
 #content
 {
 	display: grid;

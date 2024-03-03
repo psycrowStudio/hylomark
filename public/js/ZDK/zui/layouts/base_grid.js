@@ -32,7 +32,7 @@ define([
                 classes:['context-bar', 'g-v-24'],
                 events: {
                 },
-                template:'<div class="lSide g-col-6"><span>TILE STREAM</span></div><div class="rSide g-col-6"></div>'
+                template:'<div class="lSide g-col-6"><span class="logo"><i class="fa fa-th"></i>&nbsp;TILE STREAM&nbsp;<i class="fa fa-stream"></i></span></div><div class="rSide g-col-6"></div>'
             });
 
             var content = zui.types.view.fab({ 

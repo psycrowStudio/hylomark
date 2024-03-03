@@ -8,7 +8,8 @@ define([
     "zuiRoot/components/collection_viewer",
     "zuiRoot/components/toolbar",
     "zuiRoot/components/fa_glyph_picker",
-    "view_templates/tile"
+    "view_templates/tile", 
+    '3p/qrcode'
 ],
 function (
     mod_dom,
@@ -20,7 +21,8 @@ function (
     zui_collection_viewer,
     zui_toolbar,
     glyph_picker,
-    tile_template
+    tile_template,
+    qrcode,
 ) {
     var MODULE_NAME = "TILE_TRAY";
     
@@ -127,6 +129,35 @@ function (
                 tile_view.render();
             };
 
+            tile_view.add_qr_tile = function(){
+                // var cvs = document.querySelector('#abl_canvas');
+                // console.log('qr', cvs); 
+                // new qrcode(tt.el, "http://google.com");
+
+                // var t = tile_template.compile({
+                //     time: new Date()
+                // });
+
+                // var nt = zui.types.view.fab( {
+                //     model: {}, // TODO make this a tray model
+                //     parent: tile_view, 
+                //     insertionSelector: '.tile-tray',
+                //     classes:['tile', 'qr', 'noFX'],
+                //     events: {},
+                //     template: t,
+                //     timer: (function(){
+                //         setInterval(function(){
+                //             var now = luxon.DateTime.local();
+                            
+                //             var dom_timebox = nt.el.querySelector('.timebox');
+                //             dom_timebox.textContent = now.toLocaleString(luxon.DateTime.DATETIME_MED_WITH_SECONDS);
+                //         }, 200);
+                //     })()
+                // });
+
+                // tile_view.render();
+            };
+
             tile_view.add_weather_tile = function(location){
                 var t = tile_template.compile({
                     weather: {
@@ -184,10 +215,10 @@ function (
                     if(sForecast.includes('partly sunny')){
                         glpyh = isDaytime === false ? 'cloud-moon' : 'cloud-sun';
                     }
-                    if(sForecast.includes('sunny')){
+                    if(sForecast.includes('sunny') || sForecast.includes('clear')){
                         glpyh = isDaytime === false ? 'moon' : 'sun';
                     }
-                    else if (sForecast.includes('partly cloudy')){
+                    else if (sForecast.includes('partly cloudy') || sForecast.includes('mostly clear')){
                         glpyh = isDaytime === false ? 'cloud-moon' : 'cloud-sun';
                     }
                     else if (sForecast.includes('mostly cloudy')){
