@@ -93,8 +93,12 @@ function (
                     parent: tile_view, 
                     insertionSelector: '.tile-tray',
                     classes:['tile', wMod, hMod],
-                    events: {},
-                    template: t
+                    events: {
+                        'click':function(e){
+                            console.log('Tile '+ nt.el.id +' Clicked!');
+                        }
+                    },
+                    template: t,
                 });
                 
                 // colorize tile?

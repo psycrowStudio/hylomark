@@ -5,12 +5,20 @@ define(['backbone'], function (backbone) {
         routes: {
             '': 'home',
             '/': 'home',
+            'lower-third': 'lower_third',
+            'admin': 'admin_login',
             'aff': 'affiliate_login',
             'cli': 'client_login',
         },
 
         home: function (){
             require(['pages/home/index'], function(index){});
+        },
+        lower_third: function (){
+            require(['pages/std_lower_third/index'], function(index){});
+        },
+        admin_login: function (){
+            require(['pages/admin/index'], function(index){});
         },
         affiliate_login: function (){
             require(['pages/affiliate_login/index'], function(index){});
@@ -27,6 +35,7 @@ define(['backbone'], function (backbone) {
     }))
     {
         // 404
+        console.error('404 - Route Not Found');
     }
 
     return zui_router;
