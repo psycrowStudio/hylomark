@@ -25,9 +25,6 @@ define([
     var MODULE_NAME = "Home Page";
     mod_dom.css.addRaw(MODULE_NAME, tilestream_css);
 
-
-   
-
     // create page
     var testPage = zui.types.page.fab(
         { 

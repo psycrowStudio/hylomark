@@ -174,7 +174,7 @@ function (
                 var url = "https://api.weather.gov/points/{0}".replace("{0}", gps_str);
                 mod_misc.http(url, "GET").then(function(response){
                     console.log('weather loc acquired!');
-                    return nt.weather_refresh(response.properties.forecastHourly, "GET");
+                    return nt.weather_refresh(response.properties.forecastHourly);
                 }).then(function(response){
                     console.log('base weather acquired!');
                     setInterval((function(){
