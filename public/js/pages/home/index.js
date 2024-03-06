@@ -1,5 +1,7 @@
 define([
     'mod/dom_helper'
+    , 'mod/animation'
+    , 'mod/text'
     , 'mod/csv'
     , 'zui'
     , 'zuiRoot/layouts/base_grid'
@@ -11,6 +13,8 @@ define([
     , "text!/data/zip_lat_lon_2022.csv"
 ], function(
     mod_dom,
+    mod_animation,
+    mod_text,
     mod_csv,
     zui, 
     layout_base,
@@ -175,6 +179,28 @@ define([
 
                     }
 
+                }
+            },
+            {
+                label:"",
+                glyph_code:"soap",
+                hover_text: "Wobble Animation",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    var tiles = Array.from(tt.el.querySelectorAll('.tile:not(.noFX)'));
+                        if(Array.isArray(tiles) && tiles.length > 0){
+                            last_x_tile = tiles[mod_text.random.int(0, tiles.length-1)];
+                            var inBoundQ = [
+                                {
+                                    element: last_x_tile,
+                                    animation: 'rubberBand'
+                                },
+                            ];
+                            mod_animation.queueAnimationSequence(inBoundQ).then(function(){
+                                console.log('done!');
+                            });
+                        }
                 }
             },
         ]

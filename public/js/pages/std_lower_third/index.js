@@ -390,12 +390,13 @@ define([
                                 animation: 'fadeIn'
                             },
                         ];
-                        mod_animation.queueAnimationSequence(inBoundQ).then(function(){
-                            if(announcements[Object.keys(announcements)[key_ndx]].length >= ndx + 1){
-                                ndx+=1;
-                                return;
-                            }  
-                        });
+                        
+                        if(announcements[Object.keys(announcements)[key_ndx]].length >= ndx + 1){
+                            mod_animation.queueAnimationSequence(inBoundQ).then(function(){
+                                ndx+=1; 
+                            });
+                            return;
+                        }
                         // else change category
                     }
 
