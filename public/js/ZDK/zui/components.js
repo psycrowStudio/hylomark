@@ -2,10 +2,12 @@ define([
     'zuiRoot/components/dialog_layer',
     "mod/templating",
     "text!/js/ZDK/zui/view_templates/ejs/button_basic.ejs",
+    "zuiRoot/components/tour_popover",
 ], function(
     dialogLayer,
     mod_templating,
     button_basic,
+    tour_popover,
     ){
     return {
         dialogLayer : dialogLayer,
@@ -34,6 +36,7 @@ define([
                     return button;
                 }
             };
-        })()
+        })(),
+        popover: tour_popover.tour,
     };
 });

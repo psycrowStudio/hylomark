@@ -23,7 +23,7 @@ define([
     THREE,
     FX_glitteringSea,
     tilestream_css,
-    zipcode_csv
+    zipcode_csv,
 ){
     
     var MODULE_NAME = "Home Page";
@@ -201,6 +201,68 @@ define([
                                 console.log('done!');
                             });
                         }
+                }
+            },
+            {
+                label:"",
+                glyph_code:"question",
+                hover_text: "Get Help",
+                disabled: false,
+                visible: true,
+                onClick:function(view, ev){
+                    var steps =[
+                    {
+                        group:'test1',
+                        content: "This is a short guide to get you set up and show you where things are",
+                        title: "👋Welcome To Test 1",
+                        target: document.querySelector('.tileTray'),
+                    },
+                    {
+                        group:'test2',
+                        content: "This is a short guide to get you set up and show you where things are",
+                        title: "Welcome To Test 2",
+                        target: ev.currentTarget,
+                    }
+                ];
+
+                    var settings = {
+                        steps: steps,
+                        completeOnFinish:false
+                    };
+
+                    var tg = zui.components.popover;
+                    tg.setOptions(settings);
+                    tg.onBeforeStepChange(function(x,z,y){
+                        // pick a random tile and focus it?
+                        switch(tg.activeStep + 1){
+                            case 1:
+                                console.log('Step 2');
+                                tg.tourSteps[1].target = document.querySelector('.logo');
+                                tg.tourSteps[1].content = "HELLO";
+                                tg.tourSteps[1].title = "WORLD";
+                                tg.tourSteps.push({
+                                    group:'test2',
+                                    content: "This is a short guide to get you set up and show you where things are",
+                                    title: "Welcome To Test 2",
+                                    target: ev.currentTarget,
+                                });
+                                break;
+                            case 2:
+                                console.log('Step 2');
+
+                                break;
+                        }
+                    })
+                    tg.start();
+                    
+                    // tg.refresh();
+                    // tg.onFinish(()=>{ 
+                    //     console.log('Help!');
+                    //     tg.deleteFinishedTour();
+                    //     //tg.Fins();
+                    //     var elem = document.querySelectorAll('tg-backdrop')
+                    //  });
+                    
                 }
             },
         ]
